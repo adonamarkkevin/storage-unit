@@ -1,6 +1,7 @@
 import { AppDataSource } from "./data-source";
 import express from "express";
 import cors from "cors";
+import { UserInfoRoutes } from "./route/user_info.routes";
 AppDataSource.initialize()
     .then(async () => {
         const app = express();
@@ -16,6 +17,9 @@ AppDataSource.initialize()
         app.use(express.json());
         app.use(cors(corsOpts));
 
+        // version 1 API routes
+
+        app.use("/api/v1", UserInfoRoutes);
         const PORT = 8181;
 
         app.listen(PORT, () => {

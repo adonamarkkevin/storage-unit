@@ -1,6 +1,8 @@
-import "reflect-metadata"
-import { DataSource } from "typeorm"
-import { User } from "./entity/User"
+import "reflect-metadata";
+import { DataSource } from "typeorm";
+import { ItemList } from "./entity/item_list.entity";
+import { StorageUnit } from "./entity/storage_unit.entity";
+import { UserInfo } from "./entity/user_info.entity";
 
 export const AppDataSource = new DataSource({
     type: "mysql",
@@ -10,8 +12,8 @@ export const AppDataSource = new DataSource({
     password: "$n!W8cfSA7$fJ#74B2",
     database: "storage_unit",
     synchronize: true,
-    logging: false,
-    entities: [User],
+    logging: true,
+    entities: [UserInfo, StorageUnit, ItemList],
     migrations: [],
     subscribers: [],
-})
+});
